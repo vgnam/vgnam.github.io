@@ -94,36 +94,47 @@ const PROFILE = {
     },
   ],
 
-  // category must match one of the filter names below
-  categories: ["Research", "Engineering", "Competitions"],
+  // Preprints / papers under review — shown as cards with a pipeline figure
+  preprints: [
+    {
+      status: "Under review · AAMAS 2027",
+      title: "BMPS",
+      subtitle: "Behavior-Guided Multimodal Policy Search: Leveraging Vision-Language Models for Reinforcement Learning",
+      authors: "",
+      desc:
+        "LLM-based policy search usually sees only scalar rewards, which say whether a policy fails but not why. BMPS samples " +
+        "policies around the current, best and worst anchors, renders their trajectories, and asks a vision-language model to " +
+        "diagnose failure modes. That visual feedback, together with reward history, guides the LLM's next policy update.",
+      tags: ["Reinforcement learning", "LLM optimizer", "Vision-language models"],
+      figure: "assets/bmps.webp",
+      code: "https://github.com/vgnam/Behavior-Guided-Multimodal-Policy-Search",
+      paper: "",
+    },
+    {
+      status: "Under review · AAMAS 2027",
+      title: "EvoGraft",
+      subtitle: "Evolving Dataset-Specific Split Scores and Out-of-Bag Residual Correction for Tree Ensembles",
+      authors: "",
+      desc:
+        "Tree ensembles split with the same fixed criterion, such as Gini or variance reduction, on every dataset. EvoGraft uses an " +
+        "LLM as the variation operator to evolve a dataset-specific split-scoring program, then grafts uncertainty-aware " +
+        "out-of-bag residual correctors onto the forest. It gets the lowest mean rank across 14 CARTE benchmarks.",
+      tags: ["Tabular data", "Tree ensembles", "LLM-driven evolution"],
+      figure: "assets/evograft.webp",
+      code: "",
+      paper: "",
+    },
+  ],
+
+  // Leave categories empty to hide the filter buttons
+  categories: [],
   projects: [
     {
-      category: "Research",
-      title: "MPaGE",
-      desc: "LLM-designed heuristics for multi-objective combinatorial optimization, guided by a Pareto-front grid and semantic clustering of heuristics to balance runtime, quality and diversity.",
-      tags: ["Algorithm design", "LLM", "Multi-objective"],
-      code: "https://github.com/vgnam/LLMPSL",
-    },
-    {
-      category: "Research",
-      title: "ESLARA Evolved",
-      desc: "An LLM-guided forest for tabular data: tree splits come from evolved split programs, and residuals are corrected by a policy chosen by an LLM, with calibration on a held-out out-of-bag fold.",
-      tags: ["Tabular data", "LLM", "Tree ensembles"],
-      code: "https://github.com/vgnam/TriKDForest",
-    },
-    {
-      category: "Research",
-      title: "Behavior-Guided Multimodal Policy Search",
-      desc: "Uses vision-language models to guide policy search in reinforcement learning, steering exploration with behavior-level feedback.",
-      tags: ["Reinforcement learning", "VLM", "Policy search"],
-      code: "https://github.com/vgnam/Behavior-Guided-Multimodal-Policy-Search",
-    },
-    {
-      category: "Research",
-      title: "STAR",
-      desc: "Sinkhorn-balanced test-time adaptation for text-based person search. Balanced optimal-transport pseudo-labels adapt a CLIP/IRRA model to unlabeled target data, compared against UATTA, TCR, Tent, SAR and READ.",
-      tags: ["PyTorch", "CLIP", "Optimal transport", "TTA"],
-      code: "https://github.com/vgnam/TBPS-STAR",
+      category: "Hackathon",
+      title: "Sentinel402",
+      desc: "Built for UniHackfest 2026. AI agents propose payments while you keep spending authority — a policy-enforcing sandbox with guided demo scenarios and a live LLM-agent mode.",
+      tags: ["AI agents", "Security", "Node.js"],
+      code: "https://github.com/vgnam/Sentinel402",
     },
     {
       category: "Research",
@@ -131,48 +142,6 @@ const PROFILE = {
       desc: "Copula-based Particle Swarm Optimization, plus D-ECPSO for distributed black-box consensus optimization. Benchmarked on BBOB and CEC 2017 with statistical tests and ECDF analysis.",
       tags: ["Swarm intelligence", "Black-box optimization", "Python"],
       code: "https://github.com/vgnam/Copula-PSO",
-    },
-    {
-      category: "Competitions",
-      title: "Sentinel402",
-      desc: "Built for UniHackfest 2026. AI agents propose payments while you keep spending authority — a policy-enforcing sandbox with guided demo scenarios and a live LLM-agent mode.",
-      tags: ["AI agents", "Security", "Node.js"],
-      code: "https://github.com/vgnam/Sentinel402",
-    },
-    {
-      category: "Competitions",
-      title: "Datathon VinIntelligence 2026",
-      desc: "Time-series sales forecasting with a stacked ensemble of Random Forest, LightGBM and XGBoost, time-series cross-validation and a gradient-boosting meta-learner.",
-      tags: ["LightGBM", "XGBoost", "Forecasting"],
-      code: "https://github.com/vgnam/Datathon-VinIntelligence-2026",
-    },
-    {
-      category: "Competitions",
-      title: "Vietnamese Medical NER",
-      desc: "Offline extraction of Vietnamese medical concepts: fine-tuned ViHealthBERT with a lexicon fallback, character-offset preservation and rule-based section detection.",
-      tags: ["NLP", "BERT", "Healthcare"],
-      code: "https://github.com/vgnam/Medical-NER",
-    },
-    {
-      category: "Engineering",
-      title: "AIMS",
-      desc: "Team e-commerce system for the ISD course: Spring Boot backend with Flyway migrations, Angular frontend and PostgreSQL, with VietQR and PayPal payment subsystems.",
-      tags: ["Spring Boot", "Angular", "PostgreSQL"],
-      code: "https://github.com/vgnam/ISD.20252-13",
-    },
-    {
-      category: "Engineering",
-      title: "Library Management System",
-      desc: "Full-stack library system with a FastAPI backend, React + TypeScript (Vite) frontend, PostgreSQL and Docker Compose for one-command local setup.",
-      tags: ["FastAPI", "React", "TypeScript", "Docker"],
-      code: "https://github.com/vgnam/Library-Management-System",
-    },
-    {
-      category: "Research",
-      title: "LLM4ML",
-      desc: "A curated collection of research on using LLMs to solve machine-learning problems, with a focus on tabular data: prediction, few-shot learning, feature engineering and imputation.",
-      tags: ["Survey", "Tabular data", "LLM"],
-      code: "https://github.com/vgnam/LLM4ML",
     },
   ],
 

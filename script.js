@@ -125,8 +125,31 @@
     )
     .join("");
 
-  // Projects + filters
-  const cats = ["All", ...P.categories];
+  // Preprints
+  $("preprintList").innerHTML = (P.preprints || [])
+    .map(
+      (f, i) => `<article class="preprint glass glow reveal" style="--d:${i * 0.1}s">
+        ${f.figure ? `<a class="preprint__fig" href="${esc(f.figure)}" target="_blank" rel="noopener" aria-label="Open the ${esc(f.title)} pipeline figure">
+          <img src="${esc(f.figure)}" alt="${esc(f.title)} pipeline overview" loading="lazy" /></a>` : ""}
+        <div class="preprint__body">
+          <span class="preprint__status"><span class="pulse"></span>${esc(f.status)}</span>
+          <h3 class="grad">${esc(f.title)}</h3>
+          <p class="feature__subtitle">${esc(f.subtitle)}</p>
+          ${f.authors ? `<p class="feature__authors">${highlightMe(f.authors)}</p>` : ""}
+          <p class="feature__desc">${esc(f.desc)}</p>
+          <ul class="tags">${f.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+          ${f.code || f.paper ? `<div class="feature__actions">
+            ${f.paper ? `<a class="btn btn--ghost magnetic" href="${esc(f.paper)}" target="_blank" rel="noopener">${ICONS.paper}<span>Paper</span></a>` : ""}
+            ${f.code ? `<a class="btn btn--ghost magnetic" href="${esc(f.code)}" target="_blank" rel="noopener">${ICONS.github}<span>Code</span></a>` : ""}
+          </div>` : ""}
+        </div>
+      </article>`
+    )
+    .join("");
+
+  // Projects + filters (filters are hidden when fewer than two categories are set)
+  const cats = (P.categories || []).length > 1 ? ["All", ...P.categories] : [];
+  $("filters").hidden = cats.length === 0;
   $("filters").innerHTML = cats
     .map((c, i) => {
       const n = c === "All" ? P.projects.length : P.projects.filter((p) => p.category === c).length;
