@@ -36,8 +36,7 @@ const PROFILE = {
       "combinatorial problems such as TSP, CVRP, knapsack and bin packing. I also bring LLMs to tabular learning, " +
       "where they guide how tree ensembles are built and corrected. In multi-agent RL, I focus on fully decentralized " +
       "coordination, where every agent learns and acts from its own local information.",
-    "Outside research I enjoy hackathons and data competitions, and building full-stack systems with " +
-      "FastAPI, Spring Boot, React and Angular. I read a lot of papers, and try to turn the good ideas into code.",
+    "Outside research I enjoy hackathons and data competitions. I read a lot of papers, and try to turn the good ideas into code.",
   ],
 
   // Current research directions (shown as a numbered list)
@@ -148,9 +147,8 @@ const PROFILE = {
   ],
 
   skills: [
-    { group: "Languages", items: ["Python", "Java", "C / C++", "TypeScript", "JavaScript", "SQL", "RISC-V Assembly"] },
+    { group: "Languages", items: ["Python", "Java", "C / C++", "SQL", "RISC-V Assembly"] },
     { group: "AI / ML", items: ["PyTorch", "Hugging Face", "scikit-learn", "LightGBM", "XGBoost", "Gymnasium", "LLM APIs"] },
-    { group: "Web & Backend", items: ["FastAPI", "Spring Boot", "React", "Angular", "Node.js", "PostgreSQL"] },
     { group: "Tools", items: ["Git", "Docker", "Linux / WSL", "LaTeX", "Kaggle", "Jupyter"] },
   ],
 
