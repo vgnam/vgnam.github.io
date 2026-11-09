@@ -81,7 +81,7 @@ const PROFILE = {
       award: "ML × OR",
       title: "GENESIS",
       subtitle: "Generative Exploration via Stochastic Inference in Monte Carlo Tree Search for Automatic Heuristic Design",
-      authors: "",
+      authors: "Vu Gia Nam, Nguyen Viet Anh, Pham Vu Tuan Dat, Long Doan, Huynh Thi Thanh Binh",
       desc:
         "LLM-written heuristics for NP-hard combinatorial problems have noisy, high-variance performance. GENESIS models it " +
         "that way: an uncertainty-aware Monte Carlo Tree Search that decides which heuristics to refine and which to explore, " +
