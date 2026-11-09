@@ -94,7 +94,7 @@ const PROFILE = {
     },
   ],
 
-  // Preprints / papers under review — shown as cards with a pipeline figure
+  // Preprints / papers under review. viz: "bmps" or "evograft" picks the animated illustration.
   preprints: [
     {
       status: "Under review · AAMAS 2027",
@@ -106,7 +106,8 @@ const PROFILE = {
         "policies around the current, best and worst anchors, renders their trajectories, and asks a vision-language model to " +
         "diagnose failure modes. That visual feedback, together with reward history, guides the LLM's next policy update.",
       tags: ["Reinforcement learning", "LLM optimizer", "Vision-language models"],
-      figure: "assets/bmps.webp",
+      viz: "bmps",
+      caption: "VLM-diagnosed policy search loop",
       code: "https://github.com/vgnam/Behavior-Guided-Multimodal-Policy-Search",
       paper: "",
     },
@@ -120,7 +121,8 @@ const PROFILE = {
         "LLM as the variation operator to evolve a dataset-specific split-scoring program, then grafts uncertainty-aware " +
         "out-of-bag residual correctors onto the forest. It gets the lowest mean rank across 14 CARTE benchmarks.",
       tags: ["Tabular data", "Tree ensembles", "LLM-driven evolution"],
-      figure: "assets/evograft.webp",
+      viz: "evograft",
+      caption: "evolve splits · grow forest · correct residuals",
       code: "",
       paper: "",
     },

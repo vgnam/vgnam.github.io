@@ -91,6 +91,70 @@
       ${links}${cones}${targets}${nodes}${belief(84, 90, 0)}${belief(306, 90, 1)}${belief(214, 168, 2)}</svg>`;
   };
 
+  // BMPS: sample policies → render trajectories → VLM diagnoses → LLM updates θ → loop
+  const bmpsSvg = () => {
+    const net = [[38, 108], [38, 132], [38, 156], [64, 120], [64, 144], [88, 132]];
+    const netEdges = [[0, 3], [0, 4], [1, 3], [1, 4], [2, 3], [2, 4], [3, 5], [4, 5]]
+      .map(([a, b]) => `<line class="pedge" x1="${net[a][0]}" y1="${net[a][1]}" x2="${net[b][0]}" y2="${net[b][1]}"/>`).join("");
+    const netNodes = net.map(([x, y], i) => `<circle class="pnode${i === 5 ? " out" : ""}" cx="${x}" cy="${y}" r="4.5"/>`).join("");
+    const orbit = [0, 120, 240].map((a) => {
+      const r = 44, x = 63 + r * Math.cos((a * Math.PI) / 180), y = 132 + r * Math.sin((a * Math.PI) / 180);
+      return `<circle class="sample" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4"/>`;
+    }).join("");
+    const frames = [0, 1, 2].map((k) => `<rect class="frame${k === 2 ? " front" : ""}" x="${128 + k * 7}" y="${86 + k * 7}" width="66" height="48" rx="4"/>`).join("");
+    const grid = [1, 2, 3].map((k) => `<line class="frame-grid" x1="${142 + k * 16.5}" y1="100" x2="${142 + k * 16.5}" y2="148"/>`).join("") +
+      [1, 2].map((k) => `<line class="frame-grid" x1="142" y1="${100 + k * 16}" x2="208" y2="${100 + k * 16}"/>`).join("");
+    const chain = "M100 132 L126 118 M196 104 C 214 96, 218 80, 232 78 M264 96 L264 164 M296 182 C 318 182, 326 150, 334 142";
+    const loop = "M346 150 C 346 238, 64 238, 63 184";
+    return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="BMPS policy search loop illustration">
+      <path class="flow" d="${chain}"/><path class="flow flow--loop" d="${loop}"/>
+      <g class="orbit">${orbit}</g>${netEdges}${netNodes}
+      ${frames}${grid}<rect class="goal" x="194" y="102" width="9" height="9" rx="1.5"/>
+      <circle class="agent" r="4">${reduce ? "" : `<animateMotion dur="3.2s" repeatCount="indefinite" path="M150 140 L166 140 L166 124 L182 124 L182 108 L197 108"/>`}</circle>
+      <rect class="box" x="232" y="62" width="64" height="34" rx="9"/><text class="box-label" x="264" y="84">VLM</text>
+      <g class="think"><circle cx="306" cy="79" r="2.2"/><circle cx="314" cy="79" r="2.2"/><circle cx="322" cy="79" r="2.2"/></g>
+      <rect class="box box--llm" x="232" y="164" width="64" height="34" rx="9"/><text class="box-label" x="264" y="186">LLM</text>
+      <circle class="theta-halo" cx="346" cy="134" r="14"/><circle class="theta" cx="346" cy="134" r="14"/><text class="theta-label" x="346" y="139">θ′</text>
+      ${reduce ? "" : `<circle class="pulse-dot" r="3.5"><animateMotion dur="4s" repeatCount="indefinite" path="M100 132 L126 118 L196 104 C 214 96, 218 80, 232 78 L264 96 L264 164 L296 182 C 318 182, 326 150, 334 142"/></circle>
+      <circle class="pulse-dot pulse-dot--pink" r="3"><animateMotion dur="4s" begin="2s" repeatCount="indefinite" path="${loop}"/></circle>`}
+      <text class="viz-label" x="63" y="196">policy samples</text>
+      <text class="viz-label" x="170" y="160">trajectories</text>
+      <text class="viz-label" x="205" y="248">reward + memory</text>
+    </svg>`;
+  };
+
+  // EvoGraft: LLM-evolved split programs → forest → OOB uncertainty buckets → residual correction
+  const evograftSvg = () => {
+    const chips = [70, 114, 158].map((y, i) => `<g class="chip" style="animation-delay:-${(2 - i) * 1.2}s">
+        <rect x="18" y="${y}" width="58" height="32" rx="7"/>
+        <text x="47" y="${y + 20}">&lt;/&gt;</text></g>`).join("");
+    const tree = (cx, d) => {
+      const n = [[cx, 88], [cx - 14, 116], [cx + 14, 116], [cx - 21, 144], [cx - 7, 144], [cx + 7, 144], [cx + 21, 144]];
+      const e = [[0, 1], [0, 2], [1, 3], [1, 4], [2, 5], [2, 6]].map(([a, b]) => `<line class="pedge" x1="${n[a][0]}" y1="${n[a][1]}" x2="${n[b][0]}" y2="${n[b][1]}"/>`).join("");
+      return e + n.map(([x, y], i) => `<circle class="${i < 3 ? "split" : "leaf-node"}" style="animation-delay:-${d + i * 0.25}s" cx="${x}" cy="${y}" r="${i < 3 ? 5 : 3.6}"/>`).join("");
+    };
+    const cells = [];
+    for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++)
+      cells.push(`<rect class="cell c${(r + c) % 3}" style="animation-delay:-${((r * 3 + c) * 0.47).toFixed(2)}s" x="${282 + c * 22}" y="${92 + r * 22}" width="18" height="18" rx="3"/>`);
+    return `<svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="EvoGraft pipeline illustration">
+      <path class="flow" d="M82 130 L110 130 M254 130 L276 130"/>
+      <path class="flow flow--loop" d="M18 86 C 5 86, 5 174, 18 174"/>
+      <rect class="box box--llm" x="20" y="22" width="54" height="28" rx="8"/><text class="box-label" x="47" y="41">LLM</text>
+      <path class="flow" d="M47 50 L47 68"/>
+      ${chips}
+      ${tree(136, 0)}${tree(182, 0.8)}${tree(228, 1.6)}
+      ${cells.join("")}
+      <rect class="res-track" x="282" y="178" width="62" height="8" rx="4"/><rect class="res-bar" x="282" y="178" width="62" height="8" rx="4"/>
+      <text class="viz-label" x="313" y="202">residual ↓</text>
+      <text class="viz-label" x="47" y="212">split programs</text>
+      <text class="viz-label" x="182" y="176">evolved forest</text>
+      <text class="viz-label" x="313" y="84">OOB buckets</text>
+      ${reduce ? "" : `<circle class="pulse-dot" r="3.5"><animateMotion dur="3s" repeatCount="indefinite" path="M82 130 L110 130"/></circle>
+      <circle class="pulse-dot" r="3.5"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M254 130 L276 130"/></circle>`}
+    </svg>`;
+  };
+  const VIZ = { tree: treeSvg, agents: agentsSvg, bmps: bmpsSvg, evograft: evograftSvg };
+
   const highlightMe = (authors) => {
     const plain = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase().trim();
     const me = plain(P.name);
@@ -129,8 +193,7 @@
   $("preprintList").innerHTML = (P.preprints || [])
     .map(
       (f, i) => `<article class="preprint glass glow reveal" style="--d:${i * 0.1}s">
-        ${f.figure ? `<a class="preprint__fig" href="${esc(f.figure)}" target="_blank" rel="noopener" aria-label="Open the ${esc(f.title)} pipeline figure">
-          <img src="${esc(f.figure)}" alt="${esc(f.title)} pipeline overview" loading="lazy" /></a>` : ""}
+        ${VIZ[f.viz] ? `<figure class="feature__viz preprint__viz">${VIZ[f.viz]()}<figcaption>${esc(f.caption || "")}</figcaption></figure>` : ""}
         <div class="preprint__body">
           <span class="preprint__status"><span class="pulse"></span>${esc(f.status)}</span>
           <h3 class="grad">${esc(f.title)}</h3>
