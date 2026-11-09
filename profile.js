@@ -100,7 +100,7 @@ const PROFILE = {
       status: "Under review · AAMAS 2027",
       title: "BMPS",
       subtitle: "Behavior-Guided Multimodal Policy Search: Leveraging Vision-Language Models for Reinforcement Learning",
-      authors: "",
+      authors: "Vu Gia Nam, Nguyen Tran Minh Nhat, Nguyen Viet Anh, Pham Vu Tuan Dat, Long Doan, Loc Nguyen, Huynh Thi Thanh Binh",
       desc:
         "LLM-based policy search usually sees only scalar rewards, which say whether a policy fails but not why. BMPS samples " +
         "policies around the current, best and worst anchors, renders their trajectories, and asks a vision-language model to " +
@@ -115,7 +115,7 @@ const PROFILE = {
       status: "Under review · AAMAS 2027",
       title: "EvoGraft",
       subtitle: "Evolving Dataset-Specific Split Scores and Out-of-Bag Residual Correction for Tree Ensembles",
-      authors: "",
+      authors: "Vu Gia Nam, Pham Vu Tuan Dat, Long Doan, Huynh Thi Thanh Binh",
       desc:
         "Tree ensembles split with the same fixed criterion, such as Gini or variance reduction, on every dataset. EvoGraft uses an " +
         "LLM as the variation operator to evolve a dataset-specific split-scoring program, then grafts uncertainty-aware " +
