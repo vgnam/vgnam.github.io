@@ -157,7 +157,7 @@ const PROFILE = {
   // Newest first
   journey: [
     {
-      time: "Present",
+      time: "2024 — Present",
       title: "Research Assistant",
       place: "Modeling, Simulation and Optimization Laboratory (MSO Lab), HUST",
       desc: "Working under Prof. Huynh Thi Thanh Binh on LLMs for automatic algorithm design, LLMs for tabular data, reinforcement learning and multi-agent RL (DTE).",
