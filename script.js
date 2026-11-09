@@ -32,7 +32,12 @@
 
   // About (paragraphs may contain <b> — content is your own, so HTML is allowed here)
   $("aboutText").innerHTML = P.about.map((p) => `<p>${p}</p>`).join("");
-  $("interests").innerHTML = P.interests.map((i) => `<li>${esc(i)}</li>`).join("");
+  $("interests").innerHTML = P.interests
+    .map((it, n) => {
+      const o = typeof it === "string" ? { title: it } : it;
+      return `<li><span class="interest__num">${String(n + 1).padStart(2, "0")}</span><div><b>${esc(o.title)}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ""}</div></li>`;
+    })
+    .join("");
   $("facts").innerHTML = P.facts.map((f) => `<li><span>${esc(f.label)}</span><span>${esc(f.value)}</span></li>`).join("");
 
   // Featured — with an animated search-tree illustration

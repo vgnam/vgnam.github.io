@@ -195,9 +195,13 @@ b { color: var(--text); font-weight: 600; }
 .about__side { display: grid; gap: 16px; }
 .about__side .glass { padding: 24px; }
 .side__title { font-size: 0.8rem; font-family: var(--mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); margin-bottom: 16px; }
-.interests { display: flex; flex-wrap: wrap; gap: 8px; }
-.interests li { padding: 6px 12px; border-radius: 999px; font-size: 0.86rem; border: 1px solid var(--border-2); background: var(--surface); transition: border-color 0.2s, color 0.2s, background 0.2s; }
-.interests li:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0, 224, 198, 0.08); }
+.interests { display: grid; gap: 4px; }
+.interests li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 12px; margin-inline: -12px; border-radius: 12px; transition: background 0.2s; }
+.interests li:hover { background: var(--surface-2); }
+.interests b { display: block; font-size: 0.98rem; line-height: 1.4; }
+.interests small { display: block; color: var(--muted); font-size: 0.84rem; line-height: 1.5; margin-top: 2px; }
+.interest__num { font-family: var(--mono); font-size: 0.8rem; color: var(--cyan); padding-top: 3px; transition: color 0.2s; }
+.interests li:hover .interest__num { color: var(--violet); }
 .facts li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--border); font-size: 0.95rem; }
 .facts li:first-child { padding-top: 0; }
 .facts li:last-child { border-bottom: 0; padding-bottom: 0; }

@@ -10,15 +10,14 @@ const PROFILE = {
   // Shown one after another with a typing effect
   roles: [
     "Research Assistant @ MSO Lab",
-    "AI Researcher",
-    "LLM × Evolutionary Computation",
-    "Reinforcement Learning enthusiast",
-    "Full-stack builder",
+    "LLMs for algorithm design",
+    "LLMs for tabular data",
+    "Multi-agent reinforcement learning",
   ],
   intro:
     "I'm a research assistant at the Modeling, Simulation and Optimization Laboratory (HUST), " +
-    "working under Prof. Huynh Thi Thanh Binh. I teach large language models to design algorithms. I work where LLMs meet evolutionary search, Monte Carlo Tree Search and " +
-    "reinforcement learning — and I like shipping the software that makes those ideas real.",
+    "working under Prof. Huynh Thi Thanh Binh. My research spans LLMs for automatic algorithm design, " +
+    "LLMs for tabular data, and single- and multi-agent reinforcement learning.",
 
   stats: [
     { value: 1, suffix: "", label: "NeurIPS 2026 workshop paper" },
@@ -30,25 +29,23 @@ const PROFILE = {
   about: [
     "I'm an undergraduate at <b>Hanoi University of Science and Technology</b> and currently a research assistant at the " +
       "<b>Modeling, Simulation and Optimization Laboratory (MSO Lab)</b> under <b>Prof. Huynh Thi Thanh Binh</b>. " +
-      "Most of my time goes into research on " +
-      "<b>LLM-driven automatic heuristic design</b>: letting language models write, test and evolve heuristics for " +
-      "NP-hard combinatorial optimization problems such as TSP, CVRP, knapsack and bin packing.",
-    "My work <b>GENESIS</b> — an uncertainty-aware Monte Carlo Tree Search framework for heuristic design — " +
-      "was accepted at the <b>NeurIPS 2026 Workshop on ML × OR</b>. I also explore swarm intelligence, " +
-      "test-time adaptation for vision-language models, and agentic AI safety.",
+      "My research currently follows four directions: <b>LLMs for automatic algorithm design</b>, " +
+      "<b>LLMs for tabular data</b>, <b>reinforcement learning</b>, and <b>multi-agent reinforcement learning</b> " +
+      "with decentralized training and execution (DTE).",
+    "On the algorithm-design side, I let language models write, test and evolve heuristics for NP-hard combinatorial " +
+      "problems such as TSP, CVRP, knapsack and bin packing. My work <b>GENESIS</b>, an uncertainty-aware Monte Carlo " +
+      "Tree Search framework for this, was accepted at the <b>NeurIPS 2026 Workshop on ML × OR</b>. " +
+      "I also bring LLMs to tabular learning, where they guide how tree ensembles are built and corrected.",
     "Outside research I enjoy hackathons and data competitions, and building full-stack systems with " +
       "FastAPI, Spring Boot, React and Angular. I read a lot of papers, and try to turn the good ideas into code.",
   ],
 
+  // Current research directions (shown as a numbered list)
   interests: [
-    "LLMs for algorithm design",
-    "Evolutionary computation",
-    "Monte Carlo Tree Search",
-    "Reinforcement learning",
-    "Combinatorial optimization",
-    "Swarm intelligence",
-    "Test-time adaptation",
-    "AI agents & safety",
+    { title: "LLMs for automatic algorithm design", desc: "LLMs that write and evolve heuristics for combinatorial optimization" },
+    { title: "LLMs for tabular data", desc: "Language-model priors and guidance for learning on tables" },
+    { title: "Reinforcement learning", desc: "Policy search, including vision-language guidance" },
+    { title: "Multi-agent RL (DTE)", desc: "Decentralized training and execution" },
   ],
 
   facts: [
@@ -58,7 +55,7 @@ const PROFILE = {
     { label: "University", value: "HUST, Hanoi" },
     { label: "Based in", value: "Hanoi, Vietnam" },
     { label: "Languages", value: "Vietnamese, English" },
-    { label: "Focus", value: "AI / Optimization" },
+    { label: "Focus", value: "LLMs · RL · MARL" },
   ],
 
   // Big highlighted cards in the "Featured research" section
@@ -82,6 +79,27 @@ const PROFILE = {
   projects: [
     {
       category: "Research",
+      title: "MPaGE",
+      desc: "LLM-designed heuristics for multi-objective combinatorial optimization, guided by a Pareto-front grid and semantic clustering of heuristics to balance runtime, quality and diversity.",
+      tags: ["Algorithm design", "LLM", "Multi-objective"],
+      code: "https://github.com/vgnam/LLMPSL",
+    },
+    {
+      category: "Research",
+      title: "ESLARA Evolved",
+      desc: "An LLM-guided forest for tabular data: tree splits come from evolved split programs, and residuals are corrected by a policy chosen by an LLM, with calibration on a held-out out-of-bag fold.",
+      tags: ["Tabular data", "LLM", "Tree ensembles"],
+      code: "https://github.com/vgnam/TriKDForest",
+    },
+    {
+      category: "Research",
+      title: "Behavior-Guided Multimodal Policy Search",
+      desc: "Uses vision-language models to guide policy search in reinforcement learning, steering exploration with behavior-level feedback.",
+      tags: ["Reinforcement learning", "VLM", "Policy search"],
+      code: "https://github.com/vgnam/Behavior-Guided-Multimodal-Policy-Search",
+    },
+    {
+      category: "Research",
       title: "STAR",
       desc: "Sinkhorn-balanced test-time adaptation for text-based person search. Balanced optimal-transport pseudo-labels adapt a CLIP/IRRA model to unlabeled target data, compared against UATTA, TCR, Tent, SAR and READ.",
       tags: ["PyTorch", "CLIP", "Optimal transport", "TTA"],
@@ -93,13 +111,6 @@ const PROFILE = {
       desc: "Copula-based Particle Swarm Optimization, plus D-ECPSO for distributed black-box consensus optimization. Benchmarked on BBOB and CEC 2017 with statistical tests and ECDF analysis.",
       tags: ["Swarm intelligence", "Black-box optimization", "Python"],
       code: "https://github.com/vgnam/Copula-PSO",
-    },
-    {
-      category: "Research",
-      title: "MPaGE",
-      desc: "LLM-designed heuristics for multi-objective combinatorial optimization, guided by a Pareto-front grid and semantic clustering of heuristics to balance runtime, quality and diversity.",
-      tags: ["Multi-objective", "LLM", "Evolutionary search"],
-      code: "https://github.com/vgnam/LLMPSL",
     },
     {
       category: "Competitions",
@@ -138,10 +149,10 @@ const PROFILE = {
     },
     {
       category: "Research",
-      title: "LLM4Finance",
-      desc: "A curated map of research on LLMs for quantitative finance — from autonomous quant R&D agents to alpha mining — with links to official code.",
-      tags: ["Survey", "Quant", "LLM agents"],
-      code: "https://github.com/vgnam/LLM4Finance",
+      title: "LLM4ML",
+      desc: "A curated collection of research on using LLMs to solve machine-learning problems, with a focus on tabular data: prediction, few-shot learning, feature engineering and imputation.",
+      tags: ["Survey", "Tabular data", "LLM"],
+      code: "https://github.com/vgnam/LLM4ML",
     },
   ],
 
@@ -158,7 +169,7 @@ const PROFILE = {
       time: "Present",
       title: "Research Assistant",
       place: "Modeling, Simulation and Optimization Laboratory (MSO Lab), HUST",
-      desc: "Working under Prof. Huynh Thi Thanh Binh on LLM-driven automatic heuristic design, evolutionary computation and optimization.",
+      desc: "Working under Prof. Huynh Thi Thanh Binh on LLMs for automatic algorithm design, LLMs for tabular data, reinforcement learning and multi-agent RL (DTE).",
     },
     {
       time: "2026",
