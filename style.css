@@ -212,7 +212,24 @@ b { color: var(--text); font-weight: 600; }
 .feature {
   display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; padding: 44px; overflow: hidden; margin-bottom: 24px;
 }
-.feature__badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; color: #ffd36b; background: rgba(255, 196, 64, 0.1); border: 1px solid rgba(255, 196, 64, 0.35); margin-bottom: 22px; }
+.feature__badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.feature__badge, .feature__award { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; }
+.feature__badge { color: #ffd36b; background: rgba(255, 196, 64, 0.1); border: 1px solid rgba(255, 196, 64, 0.35); }
+.feature__award { color: var(--cyan); background: rgba(0, 224, 198, 0.08); border: 1px solid rgba(0, 224, 198, 0.3); }
+.feature__authors { margin: -6px 0 16px; font-size: 0.92rem; color: var(--dim); }
+.feature__authors .me { color: var(--text); font-weight: 600; text-decoration: underline; text-decoration-color: var(--violet); text-underline-offset: 3px; }
+.feature__viz { margin: 0; }
+/* Sensor-network illustration */
+.net-link { stroke: rgba(255, 255, 255, 0.12); stroke-width: 1.2; stroke-dasharray: 3 5; animation: dash 3s linear infinite; }
+.cone { fill: rgba(124, 92, 255, 0.13); stroke: rgba(124, 92, 255, 0.45); stroke-width: 1; transform-box: view-box; animation: sweep 8s ease-in-out infinite alternate; }
+@keyframes sweep { from { transform: rotate(-28deg); } to { transform: rotate(28deg); } }
+.sensor { fill: #7c5cff; stroke: #c9bcff; stroke-width: 1.2; filter: drop-shadow(0 0 6px rgba(124, 92, 255, 0.9)); }
+.sensor-ring { fill: none; stroke: rgba(124, 92, 255, 0.35); }
+.target { fill: #00e0c6; filter: drop-shadow(0 0 8px rgba(0, 224, 198, 0.95)); }
+.belief { fill: rgba(0, 224, 198, 0.75); transform-box: fill-box; transform-origin: bottom; animation: belief 3s ease-in-out infinite; }
+.belief.b1 { fill: rgba(124, 92, 255, 0.85); }
+.belief.b2 { fill: rgba(255, 92, 168, 0.75); }
+@keyframes belief { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
 .feature h3 { font-size: clamp(2.4rem, 6vw, 4rem); letter-spacing: -0.04em; }
 .feature__subtitle { font-family: var(--display); font-size: 1.12rem; color: var(--text); opacity: 0.85; margin: 12px 0 18px; line-height: 1.45; }
 .feature__desc { color: var(--muted); margin: 0 0 24px; }

@@ -64,21 +64,63 @@
       <defs><linearGradient id="edgeGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#00e0c6"/></linearGradient></defs>
       ${e}${n}</svg>`;
   };
-  $("featuredList").innerHTML = P.featured
+  // Decentralized sensor network: sweeping coverage cones, moving targets, local belief bars
+  const agentsSvg = () => {
+    const sensors = [[70, 62, 35, 7], [330, 62, 145, 9], [64, 232, -40, 8], [336, 232, -140, 10], [200, 150, 90, 6]];
+    const R = 92, HALF = 24;
+    const pt = (cx, cy, deg) => [cx + R * Math.cos((deg * Math.PI) / 180), cy + R * Math.sin((deg * Math.PI) / 180)];
+    const links = [[0, 4], [1, 4], [2, 4], [3, 4], [0, 2], [1, 3]]
+      .map(([a, b]) => `<line class="net-link" x1="${sensors[a][0]}" y1="${sensors[a][1]}" x2="${sensors[b][0]}" y2="${sensors[b][1]}"/>`)
+      .join("");
+    const cones = sensors
+      .map(([cx, cy, dir, dur], i) => {
+        const [x1, y1] = pt(cx, cy, dir - HALF), [x2, y2] = pt(cx, cy, dir + HALF);
+        return `<path class="cone" style="transform-origin:${cx}px ${cy}px;animation-duration:${dur}s;animation-delay:-${i * 1.3}s" d="M${cx} ${cy} L${x1.toFixed(1)} ${y1.toFixed(1)} A${R} ${R} 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)} Z"/>`;
+      })
+      .join("");
+    const nodes = sensors
+      .map(([cx, cy]) => `<circle class="sensor-ring" cx="${cx}" cy="${cy}" r="11"/><rect class="sensor" x="${cx - 5}" y="${cy - 5}" width="10" height="10" rx="2"/>`)
+      .join("");
+    const belief = (x, y, d) =>
+      [0, 1, 2].map((k) => `<rect class="belief b${k}" style="animation-delay:-${d + k * 0.7}s" x="${x + k * 8}" y="${y}" width="5" height="18"/>`).join("");
+    const paths = ["M40 150 C 120 40, 280 260, 360 140 S 120 120, 40 150", "M200 30 C 320 120, 80 200, 200 270 S 260 90, 200 30", "M110 270 C 160 180, 300 200, 300 110 S 150 60, 110 270"];
+    const targets = paths
+      .map((d, i) => `<circle class="target" r="4.5">${reduce ? "" : `<animateMotion dur="${11 + i * 3}s" repeatCount="indefinite" path="${d}"/>`}</circle>`)
+      .join("");
+    return `<svg viewBox="0 0 400 290" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Decentralized sensor network illustration">
+      ${links}${cones}${targets}${nodes}${belief(84, 90, 0)}${belief(306, 90, 1)}${belief(214, 168, 2)}</svg>`;
+  };
+
+  const highlightMe = (authors) => {
+    const plain = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase().trim();
+    const me = plain(P.name);
+    return authors
+      .split(",")
+      .map((a) => (plain(a) === me ? `<b class="me">${esc(a.trim())}</b>` : esc(a.trim())))
+      .join(", ");
+  };
+
+  const pubs = P.publications || [];
+  $("featuredList").innerHTML = pubs
     .map(
       (f) => `<article class="feature glass glow reveal">
         <div>
-          <span class="feature__badge">★ ${esc(f.badge)}</span>
+          <div class="feature__badges">
+            <span class="feature__badge">★ ${esc(f.venue)}</span>
+            ${f.award ? `<span class="feature__award">${esc(f.award)}</span>` : ""}
+          </div>
           <h3 class="grad">${esc(f.title)}</h3>
           <p class="feature__subtitle">${esc(f.subtitle)}</p>
+          ${f.authors ? `<p class="feature__authors">${highlightMe(f.authors)}</p>` : ""}
           <p class="feature__desc">${esc(f.desc)}</p>
           <ul class="tags">${f.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-          <div class="feature__actions">
-            ${f.code ? `<a class="btn btn--ghost magnetic" href="${esc(f.code)}" target="_blank" rel="noopener">${ICONS.github}<span>Code</span></a>` : ""}
+          ${f.code || f.paper ? `<div class="feature__actions">
             ${f.paper ? `<a class="btn btn--ghost magnetic" href="${esc(f.paper)}" target="_blank" rel="noopener">${ICONS.paper}<span>Paper</span></a>` : ""}
-          </div>
+            ${f.code ? `<a class="btn btn--ghost magnetic" href="${esc(f.code)}" target="_blank" rel="noopener">${ICONS.github}<span>Code</span></a>` : ""}
+          </div>` : ""}
         </div>
-        <figure class="feature__viz" style="margin:0">${treeSvg()}<figcaption>uncertainty-aware tree search</figcaption></figure>
+        <figure class="feature__viz">${f.viz === "agents" ? agentsSvg() : treeSvg()}
+          <figcaption>${f.viz === "agents" ? "decentralized sensors · local beliefs" : "uncertainty-aware tree search"}</figcaption></figure>
       </article>`
     )
     .join("");

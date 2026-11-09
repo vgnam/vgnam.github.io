@@ -20,7 +20,7 @@ const PROFILE = {
     "LLMs for tabular data, and single- and multi-agent reinforcement learning.",
 
   stats: [
-    { value: 1, suffix: "", label: "NeurIPS 2026 workshop paper" },
+    { value: 2, suffix: "", label: "Accepted papers in 2026" },
     { value: 40, suffix: "+", label: "GitHub repositories" },
     { value: 3, suffix: "", label: "Hackathons & competitions" },
     { value: 2023, suffix: "", label: "Started at HUST", plain: true },
@@ -32,10 +32,10 @@ const PROFILE = {
       "My research currently follows four directions: <b>LLMs for automatic algorithm design</b>, " +
       "<b>LLMs for tabular data</b>, <b>reinforcement learning</b>, and <b>multi-agent reinforcement learning</b> " +
       "with decentralized training and execution (DTE).",
-    "On the algorithm-design side, I let language models write, test and evolve heuristics for NP-hard combinatorial " +
-      "problems such as TSP, CVRP, knapsack and bin packing. My work <b>GENESIS</b>, an uncertainty-aware Monte Carlo " +
-      "Tree Search framework for this, was accepted at the <b>NeurIPS 2026 Workshop on ML × OR</b>. " +
-      "I also bring LLMs to tabular learning, where they guide how tree ensembles are built and corrected.",
+    "On the algorithm-design side, I study how language models can write, test and evolve heuristics for NP-hard " +
+      "combinatorial problems such as TSP, CVRP, knapsack and bin packing. I also bring LLMs to tabular learning, " +
+      "where they guide how tree ensembles are built and corrected. In multi-agent RL, I focus on fully decentralized " +
+      "coordination, where every agent learns and acts from its own local information.",
     "Outside research I enjoy hackathons and data competitions, and building full-stack systems with " +
       "FastAPI, Spring Boot, React and Angular. I read a lot of papers, and try to turn the good ideas into code.",
   ],
@@ -58,17 +58,37 @@ const PROFILE = {
     { label: "Focus", value: "LLMs · RL · MARL" },
   ],
 
-  // Big highlighted cards in the "Featured research" section
-  featured: [
+  // Publications — big cards. Your name inside `authors` is highlighted automatically.
+  // viz: "agents" (sensor network) or "tree" (search tree) picks the animated illustration.
+  publications: [
     {
-      badge: "NeurIPS 2026 · ML × OR Workshop",
+      venue: "SOICT 2026",
+      award: "Oral presentation",
+      title: "BeliefRAC",
+      subtitle: "Belief-Aware Deep Multi-Agent Reinforcement Learning for Decentralized Visual Sensor Networks",
+      authors: "Do Thi Phuong Thao, Vu Gia Nam, Nguyen Khanh Long, Nguyen Minh Loc, Nguyen Thi Hanh",
+      desc:
+        "Sensors in a decentralized network see only part of the scene and cannot observe their teammates' changing behavior. " +
+        "BeliefRAC infers the current interaction context online with a causal belief model trained self-supervisedly, then " +
+        "mixes posterior-weighted context values with an optimistic estimate whose strength adapts to belief uncertainty — " +
+        "easing both non-stationarity and relative overgeneralization in fully decentralized MARL.",
+      tags: ["MARL", "Decentralized training & execution", "Sensor networks", "Belief inference"],
+      viz: "agents",
+      code: "",
+      paper: "",
+    },
+    {
+      venue: "NeurIPS 2026",
+      award: "ML × OR Workshop",
       title: "GENESIS",
       subtitle: "Generative Exploration via Stochastic Inference in Monte Carlo Tree Search for Automatic Heuristic Design",
+      authors: "",
       desc:
-        "An LLM writes heuristic functions for NP-hard combinatorial problems, but their measured performance behaves like " +
-        "samples from a noisy, high-variance process. GENESIS treats it that way: an uncertainty-aware MCTS that decides " +
-        "which heuristics to refine and which to explore, instead of trusting a single noisy score.",
-      tags: ["LLM", "MCTS", "Heuristic design", "TSP / CVRP", "Python"],
+        "LLM-written heuristics for NP-hard combinatorial problems have noisy, high-variance performance. GENESIS models it " +
+        "that way: an uncertainty-aware Monte Carlo Tree Search that decides which heuristics to refine and which to explore, " +
+        "instead of trusting a single noisy score.",
+      tags: ["LLM", "MCTS", "Automatic heuristic design", "TSP / CVRP"],
+      viz: "tree",
       code: "https://github.com/vgnam/GENESIS",
       paper: "",
     },
@@ -170,6 +190,12 @@ const PROFILE = {
       title: "Research Assistant",
       place: "Modeling, Simulation and Optimization Laboratory (MSO Lab), HUST",
       desc: "Working under Prof. Huynh Thi Thanh Binh on LLMs for automatic algorithm design, LLMs for tabular data, reinforcement learning and multi-agent RL (DTE).",
+    },
+    {
+      time: "2026",
+      title: "BeliefRAC accepted at SOICT 2026",
+      place: "Oral presentation",
+      desc: "Belief-aware decentralized multi-agent RL for visual sensor networks.",
     },
     {
       time: "2026",
