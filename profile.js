@@ -78,8 +78,8 @@ const PROFILE = {
       paper: "",
     },
     {
-      venue: "NeurIPS 2026",
-      award: "ML × OR Workshop",
+      venue: "NeurIPS 2026 Workshop",
+      award: "ML × OR",
       title: "GENESIS",
       subtitle: "Generative Exploration via Stochastic Inference in Monte Carlo Tree Search for Automatic Heuristic Design",
       authors: "",
@@ -170,8 +170,8 @@ const PROFILE = {
     },
     {
       time: "2026",
-      title: "GENESIS accepted at NeurIPS 2026",
-      place: "ML × OR Workshop",
+      title: "GENESIS accepted at a NeurIPS 2026 workshop",
+      place: "Workshop on Machine Learning and Operations Research (ML × OR)",
       desc: "Paper on uncertainty-aware MCTS for LLM-based automatic heuristic design.",
     },
     {
