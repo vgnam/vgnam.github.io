@@ -9,14 +9,15 @@ const PROFILE = {
   status: "Open to research collaborations & internships",
   // Shown one after another with a typing effect
   roles: [
+    "Research Assistant @ MSO Lab",
     "AI Researcher",
     "LLM × Evolutionary Computation",
     "Reinforcement Learning enthusiast",
     "Full-stack builder",
   ],
   intro:
-    "I'm a student at Hanoi University of Science and Technology (HUST) who teaches large language models " +
-    "to design algorithms. I work where LLMs meet evolutionary search, Monte Carlo Tree Search and " +
+    "I'm a research assistant at the Modeling, Simulation and Optimization Laboratory (HUST), " +
+    "working under Prof. Huynh Thi Thanh Binh. I teach large language models to design algorithms. I work where LLMs meet evolutionary search, Monte Carlo Tree Search and " +
     "reinforcement learning — and I like shipping the software that makes those ideas real.",
 
   stats: [
@@ -27,7 +28,9 @@ const PROFILE = {
   ],
 
   about: [
-    "I'm an undergraduate at <b>Hanoi University of Science and Technology</b>. Most of my time goes into research on " +
+    "I'm an undergraduate at <b>Hanoi University of Science and Technology</b> and currently a research assistant at the " +
+      "<b>Modeling, Simulation and Optimization Laboratory (MSO Lab)</b> under <b>Prof. Huynh Thi Thanh Binh</b>. " +
+      "Most of my time goes into research on " +
       "<b>LLM-driven automatic heuristic design</b>: letting language models write, test and evolve heuristics for " +
       "NP-hard combinatorial optimization problems such as TSP, CVRP, knapsack and bin packing.",
     "My work <b>GENESIS</b> — an uncertainty-aware Monte Carlo Tree Search framework for heuristic design — " +
@@ -49,6 +52,9 @@ const PROFILE = {
   ],
 
   facts: [
+    { label: "Position", value: "Research Assistant" },
+    { label: "Lab", value: "MSO Lab, HUST" },
+    { label: "Advisor", value: "Prof. Huynh Thi Thanh Binh" },
     { label: "University", value: "HUST, Hanoi" },
     { label: "Based in", value: "Hanoi, Vietnam" },
     { label: "Languages", value: "Vietnamese, English" },
@@ -148,6 +154,12 @@ const PROFILE = {
 
   // Newest first
   journey: [
+    {
+      time: "Present",
+      title: "Research Assistant",
+      place: "Modeling, Simulation and Optimization Laboratory (MSO Lab), HUST",
+      desc: "Working under Prof. Huynh Thi Thanh Binh on LLM-driven automatic heuristic design, evolutionary computation and optimization.",
+    },
     {
       time: "2026",
       title: "GENESIS accepted at NeurIPS 2026",
