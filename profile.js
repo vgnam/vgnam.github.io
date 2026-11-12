@@ -74,7 +74,7 @@ const PROFILE = {
       tags: ["MARL", "Decentralized training & execution", "Sensor networks", "Belief inference"],
       viz: "agents",
       code: "",
-      paper: "",
+      paper: "papers/BeliefRAC.pdf",
     },
     {
       venue: "NeurIPS 2026 Workshop",
@@ -89,7 +89,7 @@ const PROFILE = {
       tags: ["LLM", "MCTS", "Automatic heuristic design", "TSP / CVRP"],
       viz: "tree",
       code: "https://github.com/vgnam/GENESIS",
-      paper: "",
+      paper: "https://openreview.net/forum?id=LWps0RvENH",
     },
   ],
 
