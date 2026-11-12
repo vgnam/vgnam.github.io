@@ -96,7 +96,7 @@ const PROFILE = {
   // Preprints / papers under review. viz: "bmps" or "evograft" picks the animated illustration.
   preprints: [
     {
-      status: "Under review · AAMAS 2027",
+      status: "Under review",
       title: "BMPS",
       subtitle: "Behavior-Guided Multimodal Policy Search: Leveraging Vision-Language Models for Reinforcement Learning",
       authors: "Vu Gia Nam, Nguyen Tran Minh Nhat, Nguyen Viet Anh, Pham Vu Tuan Dat, Long Doan, Loc Nguyen, Huynh Thi Thanh Binh",
@@ -108,10 +108,10 @@ const PROFILE = {
       viz: "bmps",
       caption: "VLM-diagnosed policy search loop",
       code: "https://github.com/vgnam/Behavior-Guided-Multimodal-Policy-Search",
-      paper: "",
+      paper: "papers/BMPS.pdf",
     },
     {
-      status: "Under review · AAMAS 2027",
+      status: "Under review",
       title: "EvoGraft",
       subtitle: "Evolving Dataset-Specific Split Scores and Out-of-Bag Residual Correction for Tree Ensembles",
       authors: "Vu Gia Nam, Pham Vu Tuan Dat, Long Doan, Huynh Thi Thanh Binh",
@@ -123,7 +123,7 @@ const PROFILE = {
       viz: "evograft",
       caption: "evolve splits · grow forest · correct residuals",
       code: "",
-      paper: "",
+      paper: "papers/EvoGraft.pdf",
     },
   ],
 
