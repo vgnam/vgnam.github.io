@@ -226,6 +226,7 @@
           <span class="project__cat">${esc(p.category)}</span>
           ${p.code ? `<a class="project__link" href="${esc(p.code)}" target="_blank" rel="noopener" aria-label="Open ${esc(p.title)} on GitHub">${ICONS.arrow}</a>` : ""}
         </div>
+        ${p.award ? `<span class="project__award">🏆 ${esc(p.award)}</span>` : ""}
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.desc)}</p>
         <ul class="tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>

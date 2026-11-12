@@ -332,6 +332,11 @@ b { color: var(--text); font-weight: 600; }
 .project__cat { font-family: var(--mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--cyan); }
 .project__link { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; border: 1px solid var(--border); color: var(--muted); transition: color 0.2s, border-color 0.2s, transform 0.25s, background 0.2s; }
 .project__link:hover { color: #fff; border-color: var(--violet); background: rgba(124, 92, 255, 0.15); transform: rotate(-8deg) scale(1.06); }
+.project__award {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px;
+  padding: 5px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+  color: #ffd36b; background: rgba(255, 196, 64, 0.1); border: 1px solid rgba(255, 196, 64, 0.35);
+}
 .project h3 { font-size: 1.35rem; letter-spacing: -0.02em; margin-bottom: 10px; transform: translateZ(30px); }
 .project p { color: var(--muted); margin: 0 0 22px; flex: 1; font-size: 0.95rem; transform: translateZ(18px); }
 

@@ -133,7 +133,8 @@ const PROFILE = {
     {
       category: "Hackathon",
       title: "Sentinel402",
-      desc: "Built for UniHackfest 2026. AI agents propose payments while you keep spending authority — a policy-enforcing sandbox with guided demo scenarios and a live LLM-agent mode.",
+      award: "Best System Architecture · UniHackfest 2026",
+      desc: "AI agents propose payments while you keep spending authority — a policy-enforcing sandbox with guided demo scenarios and a live LLM-agent mode.",
       tags: ["AI agents", "Security", "Node.js"],
       code: "https://github.com/vgnam/Sentinel402",
     },
@@ -174,9 +175,9 @@ const PROFILE = {
     },
     {
       time: "2026",
-      title: "UniHackfest 2026",
-      place: "Hackathon",
-      desc: "Built Sentinel402, a spending-authority guard for payment-capable AI agents.",
+      title: "Best System Architecture award",
+      place: "UniHackfest 2026",
+      desc: "Won with Sentinel402, a spending-authority guard for payment-capable AI agents.",
     },
     {
       time: "2026",
